@@ -21,7 +21,7 @@ require Exporter;
 use WWW::Mechanize::GZip;
 use URI::Escape;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 sub new
 {
@@ -303,16 +303,19 @@ Detailed sample with comments:
 =head2 SUBROUTINES/METHODS
 
 Create album:
+
 	$vk->createAlbum("Album name", "Album description");
 
 Upload photo:
+
 	$vk->addPhoto("photo.jpg", "Album name", "Album description", $view, $comments);
 
-$view - means who can view album: 0-all, 1-friends, 2-friends&friends, 3-me
+	$view # - means who can view album: 0-all, 1-friends, 2-friends&friends, 3-me
 
-$comments - means who can view album: 0-all, 1-friends, 2-friends&friends, 3-me
+	$comments # - means who can view album: 0-all, 1-friends, 2-friends&friends, 3-me
 
 Login to account:
+
 	$vk->login('vkaccount@email.com', 'mypassword', $walluri, $security_code);
 
 =head1 SEE ALSO
