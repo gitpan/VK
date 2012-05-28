@@ -21,7 +21,7 @@ require Exporter;
 use WWW::Mechanize::GZip;
 use URI::Escape;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 sub new
 {
@@ -253,7 +253,7 @@ __END__
 
 =head1 NAME
 
-VK - module allows to make posts with images and links, create albumbs and upload images.
+VK - module to work with "VKontakte" social network (vk.com), it allows to make posts with images and links, create albumbs and upload images.
 
 =head1 SYNOPSIS
 
