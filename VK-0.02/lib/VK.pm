@@ -21,7 +21,7 @@ require Exporter;
 use WWW::Mechanize::GZip;
 use URI::Escape;
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 sub new
 {
@@ -248,83 +248,85 @@ sub wallPost
 
 	return ($codes[4] eq '0')?1:0;
 }
+1;
+__END__
 
 =head1 NAME
 
-VK - This module allows to manage VKontakte account: make posts with images and links, create albumbs and upload images.
+VK - module allows to make posts with images and links, create albumbs and upload images.
 
 =head1 SYNOPSIS
 
 Simple usage:
 
-use VK;
+	use VK;
 
-my $vk = VK->new('vkaccount@email.com', 'mypassword', undef, 1234);
-print $vk->wallPost(
-    message         => "Hello World!",
-    link            => "http://code.google.com/p/vkontakte-non-api-manager",
-    photo           => "sample.jpg"
-)?'Success':'Failed';
+	my $vk = VK->new('vkaccount@email.com', 'mypassword', undef, 1234);
+	print $vk->wallPost(
+	    message         => "Hello World!",
+ 	   link            => "http://code.google.com/p/vkontakte-non-api-manager",
+ 	   photo           => "sample.jpg"
+	)?'Success':'Failed';
 
 =head1 DESCRIPTION
 
 Detailed sample with comments:
 
-use VK;
+	use VK;
 
-my $security_code = 1234; # last 4 digits of your phone registered to account
+	my $security_code = 1234; # last 4 digits of your phone registered to account
 
-# login to post to our own wall
-my $vk = VK->new('vkaccount@email.com', 'mypassword', undef, $security_code);
+	# login to post to our own wall
+	my $vk = VK->new('vkaccount@email.com', 'mypassword', undef, $security_code);
 
-# next init sample is for group's wall posting
-# my $vk = VK->new('vkaccount@email.com', 'mypassword', "/mygroupaddress", $security_code);
+	# next init sample is for group's wall posting
+	# my $vk = VK->new('vkaccount@email.com', 'mypassword', "/mygroupaddress", $security_code);
 
-print $vk->wallPost(
-	message         => "Hello World!", # post message
-	#to_id           => 1234456, # userid/wallid where we are going to post, or void to post to own wall/group-wall
+	print $vk->wallPost(
+		message         => "Hello World!", # post message
+		#to_id           => 1234456, # userid/wallid where we are going to post, or void to post to own wall/group-wall
 
-	link            => "http://code.google.com/p/vkontakte-non-api-manager",	# link
-	link_title      => "This is the title of the link popup", # link popup description
-	link_desc       => "This is the content of link popup", # link popup description
+		link            => "http://code.google.com/p/vkontakte-non-api-manager",	# link
+		link_title      => "This is the title of the link popup", # link popup description
+		link_desc       => "This is the content of link popup", # link popup description
 
-	signed          => '', # 1/0 - signs post if 
-	note_title      => '',
+		signed          => '', # 1/0 - signs post if 
+		note_title      => '',
 
-	photo           => "sample.jpg",	
-	album           => "This is the new album",
-	album_desc      => "This is description of a new album",
-	album_view      => 0, # 0-all, 1-friends, 2-friends&friends, 3-me
-	album_comments  => 0,	# 0-all, 1-friends, 2-friends&friends, 3-me
-)?'Succeeded':'Failed';
+		photo           => "sample.jpg",	
+		album           => "This is the new album",
+		album_desc      => "This is description of a new album",
+		album_view      => 0, # 0-all, 1-friends, 2-friends&friends, 3-me
+		album_comments  => 0,	# 0-all, 1-friends, 2-friends&friends, 3-me
+	)?'Succeeded':'Failed';
 
 =head2 SUBROUTINES/METHODS
 
-Extra functions:
+Create album:
+	$vk->createAlbum("Album name", "Album description");
 
-# create album
-$vk->createAlbum("Album name", "Album description");
-
-# upload photo
-$vk->addPhoto("photo.jpg", "Album name", "Album description", $view, $comments);
+Upload photo:
+	$vk->addPhoto("photo.jpg", "Album name", "Album description", $view, $comments);
 
 $view - means who can view album: 0-all, 1-friends, 2-friends&friends, 3-me
+
 $comments - means who can view album: 0-all, 1-friends, 2-friends&friends, 3-me
 
-# login to account
-$vk->login('vkaccount@email.com', 'mypassword', $walluri, $security_code);
+Login to account:
+	$vk->login('vkaccount@email.com', 'mypassword', $walluri, $security_code);
 
 =head1 SEE ALSO
 
 Module was made using WWW::Mechanize::GZip,
+
 so if you are going to make any modifications next modules will be useful:
 
-WWW::Mechanize
-WWW::Mechanize::Gzip
+	WWW::Mechanize
+	WWW::Mechanize::Gzip
 
 =head1 AUTHOR
 
-Marat Shaymardanov, E<lt>info@leonmedia.ruE<gt>
+Marat Shaymardanov, email: info@leonmedia.ru
 
 =head1 COPYRIGHT AND LICENSE
 
@@ -335,5 +337,3 @@ This program is free software; you can redistribute it and/or modify it under th
 See http://dev.perl.org/licenses/ for more information.
 
 =cut
-
-1;
