@@ -4,7 +4,7 @@
 ##                                               ##
 ## VKontakte serverside manager                  ##
 ##                                               ##
-## Marat Shaymardanov,   LeonMedia LLC, 2012     ##
+## Marat Shaymardanov,   LeonMedia LLC, 2013     ##
 ## info@leonmedia.ru     http://leonmedia.ru     ##
 ##                                               ##
 ## http://vk.com/do.more                         ##
@@ -18,7 +18,7 @@ my $security_code = 1234; # last 4 digits of your phone registered to account
 # login to post to our own wall
 my $vk = VK->new('vkaccount@email.com', 'mypassword', undef, $security_code);
 
-# next init sample is for group's wall posting
+# next init sample is for group's wall posting (uncomment)
 # my $vk = VK->new('vkaccount@email.com', 'mypassword', "/mygroupaddress", $security_code);
 
 print $vk->wallPost(
