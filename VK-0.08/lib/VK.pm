@@ -1,6 +1,18 @@
 #!/usr/bin/perl
 
+###################################################
+##                                               ##
+## VKontakte serverside manager                  ##
+##                                               ##
+## Marat Shaymardanov,   LeonMedia LLC, 2013     ##
+## info@leonmedia.ru     http://leonmedia.ru     ##
+##                                               ##
+## http://vk.com/do.more                         ##
+##                                               ##
+###################################################
+
 package VK;
+
 require Exporter;
 
 @ISA = qw(Exporter);
@@ -8,6 +20,8 @@ require Exporter;
 
 use WWW::Mechanize::GZip;
 use URI::Escape;
+
+our $VERSION = '0.08';
 
 sub new
 {
